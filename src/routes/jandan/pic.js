@@ -49,6 +49,8 @@ module.exports = async params => {
       description =
         '未知内容，请前往 https://github.com/DIYgod/RSSHub/issues 提交 issue'
   }
+
+  // Cache last fetch time
   let lastUpdate = await KV_TELE.get(url) // eslint-disable-line
   if (lastUpdate) {
     lastUpdate = new Date(lastUpdate).getTime()
@@ -101,5 +103,6 @@ module.exports = async params => {
   if (res.item.length) {
     await KV_TELE.put(url, new Date().toUTCString()) // eslint-disable-line
   }
-  return res
+
+  return { msg: "No fresh data!" }
 }

@@ -60,7 +60,7 @@ class Router {
     return this.handle([], handler)
   }
 
-  route({event, req}) {
+  route(req) {
     const route = this.resolve(req)
     if (route) {
       return route.handler(req, route.params(req))

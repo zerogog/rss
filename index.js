@@ -3,6 +3,8 @@ const Router = require('@/utils/router')
 const r = new Router()
 r.get(WK_PRE + '/jiandan/:sub_model', compose(require('@/routes/jandan/pic')))
 
+
+
 /**
  * handleRequest wrapper data to json
  * width cache feature
@@ -43,6 +45,11 @@ async function handleRequest(event) {
 
 
 function compose(fn) {
+  /** 
+   * function will be called if url match
+   * @param _                   worker request object
+   * @param params              url search params 
+   * */
   return async function (_, params) {
     const init = {
       headers: {
